@@ -16,8 +16,6 @@ class AuthTest {
 
     @BeforeEach
     void setup() {
-//        Configuration.headless=true;
-        Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
     }
 
