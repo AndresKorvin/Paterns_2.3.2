@@ -6,8 +6,6 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import lombok.Value;
-import lombok.val;
-import org.junit.jupiter.api.BeforeAll;
 
 import java.util.Locale;
 
@@ -37,7 +35,7 @@ public class DataGenerator {
                 .statusCode(200); // код 200 OK
     }
 
-        public static String getRandomLogin() {
+    public static String getRandomLogin() {
         return faker.name().username();
     }
 
@@ -51,7 +49,7 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-            RegistrationDto user = new RegistrationDto(getRandomLogin(),getRandomPassword(), status);
+            RegistrationDto user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
             return user;
         }
 

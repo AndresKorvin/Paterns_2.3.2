@@ -1,12 +1,12 @@
 package ru.netology.testmode.test;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static ru.netology.testmode.data.DataGenerator.Registration.getRegisteredUser;
 import static ru.netology.testmode.data.DataGenerator.Registration.getUser;
 import static ru.netology.testmode.data.DataGenerator.getRandomLogin;
@@ -16,8 +16,6 @@ class AuthTest {
 
     @BeforeEach
     void setup() {
-//        Configuration.headless=true;
-        Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
     }
 
@@ -25,10 +23,10 @@ class AuthTest {
     @DisplayName("Should successfully login with active registered user")
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
         var registeredUser = getRegisteredUser("active");
-    $("[data-test-id='login'] .input__control").setValue(registeredUser.getLogin());
-    $("[data-test-id='password'] .input__control").setValue(registeredUser.getPassword());
-    $("[data-test-id='action-login']").click();
-    $("h2").shouldHave(Condition.text("Личный кабинет"));
+        $("[data-test-id='login'] .input__control").setValue(registeredUser.getLogin());
+        $("[data-test-id='password'] .input__control").setValue(registeredUser.getPassword());
+        $("[data-test-id='action-login']").click();
+        $("h2").shouldHave(Condition.text("Личный кабинет"));
     }
 
     @Test
